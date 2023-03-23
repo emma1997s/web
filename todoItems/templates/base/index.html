@@ -1,0 +1,44 @@
+{% extends "main.html" %}
+{% block content %}
+    <div class="head-title">
+        <h3>Welcome to your todoList items</h3>
+    </div>
+    <div class="content">
+        <div class="containers">
+            <div class="add-todo-section">
+                <h4>Add Todo Items On List</h4>
+                <form action="" method="post" id"form">
+                    {% csrf_token %}
+                    <div class="error_text"></div>
+                    <div class="flex-section">
+                        <input class="input" name="name" id="name" type="text" placeholder="Enter todo item">
+                        <button class="add">Add</button>
+                    </div>
+                </form>
+                <div class="search">
+                    <form action="" method="get">
+                        <input class="btns" type="text" name="search"  placeholder="search todo item">
+                        <button class="adds"><i class="bi bi-search"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="added-items">
+                {% for todo in names %}
+                {% if request.user == todo.host%}
+                    <div id="flex-items" class="activ">
+                        <ul class="flex activ">
+                            <li class="todo">{{todo.item}}</li>
+                            <div class="flex-btns">
+                                <li><button id="popover" class="btn btn-danger mx-auto" value={{todo.id}}><i class="bi bi-trash"></i>Delete</button></li>
+                                <li><button id="done" class="btn btn-outline-success mx-auto done">Done</button></li>
+                            </div>
+                        </ul>
+                        <hr>
+                    </div>
+                {% else %}
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
