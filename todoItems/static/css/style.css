@@ -118,9 +118,23 @@ body {
         width: 100%;
     }
 
+    body {
+        overflow-y: hidden;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.9rem;
+    }
+
+    .form-content2 {
+        overflow-y: scroll;
+        height: 520px;
+    }
 
     .add-todo-section {
         width: 100%;
+    }
+
+    .form-content2::-webkit-scrollbar {
+        width: 0px;
     }
 
     .containers {
